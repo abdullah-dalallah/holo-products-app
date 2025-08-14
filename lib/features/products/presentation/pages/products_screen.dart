@@ -5,6 +5,7 @@ import 'package:holo_products_app/constants/const_font_weights.dart';
 import 'package:holo_products_app/constants/my_colors.dart';
 import 'package:holo_products_app/core/presentation/widgets/base_text_widget.dart';
 import 'package:holo_products_app/core/presentation/widgets/rotating_loader.dart';
+import 'package:holo_products_app/core/presentation/widgets/settings_sheet.dart';
 import 'package:holo_products_app/features/products/presentation/bloc/products_bloc.dart';
 import 'package:holo_products_app/features/products/presentation/widgets/product_grid_view_widget.dart';
 
@@ -38,6 +39,20 @@ class ProductsScreen extends StatelessWidget {
             ),
           ],
         ),
+        actions: [
+          IconButton(onPressed: (){
+            showModalBottomSheet(
+                useSafeArea: true,
+                enableDrag: true,
+                isScrollControlled: true,
+                context: context,
+                backgroundColor: Colors.transparent,
+                builder: (context){
+                  return  SettingsSheet();
+                }
+            );
+          }, icon: ImageIcon(AssetImage("assets/images/icons/Hamburger Menu.png"),color: MyColors.white,))
+        ],
       ),
       body: BlocBuilder<ProductsBloc, ProductsState>(
         builder: (context, state) {

@@ -7,9 +7,11 @@ import 'package:holo_products_app/constants/my_colors.dart';
 import 'package:holo_products_app/core/presentation/widgets/base_text_widget.dart';
 import 'package:holo_products_app/core/presentation/widgets/flutter_rating_bar.dart';
 import 'package:holo_products_app/core/utils/AEDGenerator.dart';
+import 'package:holo_products_app/data/translation.dart';
 import 'package:holo_products_app/features/products/domain/entities/product_entity.dart';
 import 'package:holo_products_app/features/products/presentation/widgets/product_details_sheet.dart';
 import 'package:holo_products_app/injection_container.dart';
+import 'package:holo_products_app/main.dart';
 
 class ProductCardWidget extends StatelessWidget{
   final ProductEntity product;
@@ -176,7 +178,7 @@ class ProductCardWidget extends StatelessWidget{
                       );
 
                     },
-                    child: BasicTextWidget(text: 'Learn More',
+                    child: BasicTextWidget(text: translation(context).learnMore,
                       fontWeight: ConstFontWeights.bold,
                       fontSize: ConstDimensions.regular14,
                       color: MyColors.white,
