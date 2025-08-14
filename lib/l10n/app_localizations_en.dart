@@ -25,4 +25,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get done => 'Done';
+
+  @override
+  String get appearance => 'Appearance';
+
+  @override
+  String get toggleToSwitchAppearance => 'Toggle To Switch Appearance';
 }

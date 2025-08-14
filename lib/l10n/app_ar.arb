@@ -4,5 +4,7 @@
   "language": "اللغه",
   "description": "الوصف",
   "learnMore": "أعلم المزيد",
-  "done": "انتهى"
+  "done": "انتهى",
+  "appearance": "المظهر",
+  "toggleToSwitchAppearance": "اضغط لتغيير المظهر"
 }

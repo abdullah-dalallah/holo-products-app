@@ -17,9 +17,9 @@ class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.white,
       appBar: AppBar(
         backgroundColor: MyColors.grey900,
+        centerTitle: false,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,7 +42,7 @@ class ProductsScreen extends StatelessWidget {
         actions: [
           IconButton(onPressed: (){
             showModalBottomSheet(
-                useSafeArea: true,
+                useSafeArea: false,
                 enableDrag: true,
                 isScrollControlled: true,
                 context: context,

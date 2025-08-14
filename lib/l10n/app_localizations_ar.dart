@@ -25,4 +25,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get done => 'انتهى';
+
+  @override
+  String get appearance => 'المظهر';
+
+  @override
+  String get toggleToSwitchAppearance => 'اضغط لتغيير المظهر';
 }

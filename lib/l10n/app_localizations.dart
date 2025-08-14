@@ -133,6 +133,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Done'**
   String get done;
+
+  /// No description provided for @appearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get appearance;
+
+  /// No description provided for @toggleToSwitchAppearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle To Switch Appearance'**
+  String get toggleToSwitchAppearance;
 }
 
 class _AppLocalizationsDelegate
