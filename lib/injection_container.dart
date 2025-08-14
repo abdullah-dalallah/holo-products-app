@@ -4,11 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:holo_products_app/core/network/network_info.dart';
 import 'package:holo_products_app/core/utils/AEDGenerator.dart';
+import 'package:holo_products_app/features/products/data/data_sources/products_local_data_source.dart';
 import 'package:holo_products_app/features/products/data/data_sources/products_remote_data_source.dart';
 import 'package:holo_products_app/features/products/data/repositories/products_repository_impl.dart';
 import 'package:holo_products_app/features/products/domain/repositories/products_repository.dart';
 import 'package:holo_products_app/features/products/domain/usecases/get_products_usecase.dart';
 import 'package:holo_products_app/features/products/presentation/bloc/products_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/utils/server_response.dart';
 final sl = GetIt.instance;
@@ -26,6 +28,8 @@ Future<void> initializeDependencies() async {
 
   //!External
   sl.registerLazySingleton(() => Dio());
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sl.registerLazySingleton(() => sharedPreferences);
 
 }
 
@@ -37,6 +41,7 @@ getProducts(){
   //Datasource
   sl.registerLazySingleton<ProductsRemoteDataSource>(() =>ProductsRemoteDataSourceImpl( dio: sl(), ));
   //repository
-  sl.registerLazySingleton<ProductsRepository>(() =>ProductsRepositoryImpl(networkInfo: sl(), remoteDataSource: sl()));
+  sl.registerLazySingleton<ProductsRepository>(() =>ProductsRepositoryImpl(networkInfo: sl(), remoteDataSource: sl(),localDataSource: sl() ));
+  sl.registerLazySingleton<ProductsLocalDataSource>(() => ProductsLocalDataSourceImpl(sharedPreferences: sl()),);
 
 }

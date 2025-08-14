@@ -29,6 +29,17 @@ class ServerFailure extends Failure {
   int get getStatusCode => errorObject?.response?.statusCode ?? 0;
 }
 
+class CacheFailure extends Failure {
+  final String message;
+
+  CacheFailure({required this.message});
+
+  @override
+  String get getErrorMessage => message;
+
+  @override
+  int get getStatusCode => -1; // custom non-HTTP code
+}
 
 class OfflineFailure extends Failure {
   final String message;
