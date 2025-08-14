@@ -23,7 +23,7 @@ class ProductCardWidget extends StatelessWidget{
       borderRadius: BorderRadius.circular(10),
       onTap: (){
         showModalBottomSheet(
-            useSafeArea: true,
+            useSafeArea: false,
             enableDrag: true,
             isScrollControlled: true,
             context: context,
@@ -35,7 +35,7 @@ class ProductCardWidget extends StatelessWidget{
       },
       child: Ink(
         decoration: ShapeDecoration(
-          color: Colors.white /* color-background-container */,
+          // color: Colors.white /* color-background-container */,
           shape: RoundedRectangleBorder(
             side: const BorderSide(
               width: 0.50,
@@ -109,7 +109,7 @@ class ProductCardWidget extends StatelessWidget{
                           BasicTextWidget(text: product.title,
                             fontWeight: ConstFontWeights.regular,
                             fontSize: ConstDimensions.regular14,
-                            color: MyColors.grey900,
+
                             maxLines: 2,
                             textOverflow: TextOverflow.ellipsis,
                             height: 1.33,
@@ -126,7 +126,7 @@ class ProductCardWidget extends StatelessWidget{
                   sl<AEDGenerator>().generate(product.price),
                     fontWeight: ConstFontWeights.bold,
                     fontSize: ConstDimensions.bold16,
-                    color: MyColors.grey900,
+
                     maxLines: 2,
                     textOverflow: TextOverflow.ellipsis,
                     height: 1.33,
@@ -167,7 +167,7 @@ class ProductCardWidget extends StatelessWidget{
                     ),
                     onPressed: (){
                       showModalBottomSheet(
-                          useSafeArea: true,
+                          useSafeArea: false,
                           enableDrag: true,
                           isScrollControlled: true,
                           context: context,

@@ -4,5 +4,7 @@
   "language": "Language",
   "description": "Description",
   "learnMore": "Learn More",
-  "done": "Done"
+  "done": "Done",
+  "appearance": "Appearance",
+  "toggleToSwitchAppearance": "Toggle To Switch Appearance"
 }

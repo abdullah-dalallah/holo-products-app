@@ -4,7 +4,7 @@ class BasicTextWidget extends StatelessWidget {
   final String text;
   final FontWeight fontWeight;
   final double fontSize;
-  final Color color;
+  final Color? color;
   final TextAlign textAlign;
   final int? maxLines;
   final TextOverflow? textOverflow;
@@ -17,7 +17,7 @@ class BasicTextWidget extends StatelessWidget {
       required this.text,
       required this.fontWeight,
       required this.fontSize,
-      required this.color,
+      this.color,
       this.height,
       this.textAlign = TextAlign.start,
       this.maxLines ,

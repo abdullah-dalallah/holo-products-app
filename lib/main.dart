@@ -4,8 +4,11 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:holo_products_app/features/products/presentation/bloc/products_bloc.dart';
 import 'package:holo_products_app/features/products/presentation/pages/products_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:holo_products_app/features/theme/domain/entity/theme_entity.dart';
+import 'package:holo_products_app/features/theme/presntation/bloc/theme_bloc.dart';
 import 'package:holo_products_app/l10n/app_localizations.dart';
 import 'package:holo_products_app/l10n/l10n.dart';
+import 'package:holo_products_app/theme/theme.dart';
 
 import 'injection_container.dart';
 
@@ -40,8 +43,11 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => sl<ProductsBloc>()..add(GetProducts())),
+        BlocProvider(create: (_) => sl<ThemeBloc>()..add(GetTheme())),
       ],
-      child: MaterialApp(
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+  builder: (context, state) {
+    return MaterialApp(
         supportedLocales: L10n.all,
         localizationsDelegates:  const [
           AppLocalizations.delegate,
@@ -52,11 +58,12 @@ class _MyAppState extends State<MyApp> {
 
         locale: _locale,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        ),
+        theme: AppTheme.getTheme(state.themeEntity?.themeType== ThemeType.dark),
+        // darkTheme: darkMode,
         home: const ProductsScreen(appName: "Holo",),
-      ),
+      );
+  },
+),
     );
   }
 }
