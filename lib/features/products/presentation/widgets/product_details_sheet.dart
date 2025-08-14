@@ -8,6 +8,7 @@ import 'package:holo_products_app/constants/const_font_weights.dart';
 import 'package:holo_products_app/constants/my_colors.dart';
 import 'package:holo_products_app/core/presentation/widgets/base_text_widget.dart';
 import 'package:holo_products_app/core/presentation/widgets/flutter_rating_bar.dart';
+import 'package:holo_products_app/data/translation.dart';
 import 'package:holo_products_app/features/products/domain/entities/product_entity.dart';
 
 
@@ -37,7 +38,7 @@ class ProductDetailsSheet extends StatelessWidget{
                       automaticallyImplyLeading: false,
                       centerTitle: false,
                       title:
-                      const BasicTextWidget(text: "Product Details", fontWeight: ConstFontWeights.semiBold, fontSize: ConstDimensions.semiBold16, color: MyColors.grey900),
+                       BasicTextWidget(text: translation(context).productDetails, fontWeight: ConstFontWeights.semiBold, fontSize: ConstDimensions.semiBold16, color: MyColors.grey900),
                       actions: [
                         IconButton(onPressed: (){Navigator.pop(context);}, icon: const Icon(Icons.close)),
                       ],
@@ -106,7 +107,7 @@ class ProductDetailsSheet extends StatelessWidget{
                       crossAxisAlignment: CrossAxisAlignment.start,
 
                       children: [
-                        BasicTextWidget(text: 'Description',
+                        BasicTextWidget(text: translation(context).description,
                           fontWeight: ConstFontWeights.bold,
                           fontSize: ConstDimensions.bold14,
                           color: MyColors.grey900,
@@ -183,7 +184,7 @@ class ProductDetailsSheet extends StatelessWidget{
                         onPressed: (){
                           Navigator.pop(context);
                         },
-                        child: BasicTextWidget(text: 'Done',
+                        child: BasicTextWidget(text: translation(context).done,
                           fontWeight: ConstFontWeights.bold,
                           fontSize: ConstDimensions.regular14,
                           color: MyColors.white,
