@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:holo_products_app/features/local_cart/presentation/bloc/cart_bloc.dart';
 import 'package:holo_products_app/features/products/presentation/bloc/products_bloc.dart';
 import 'package:holo_products_app/features/products/presentation/pages/products_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,6 +45,7 @@ class _MyAppState extends State<MyApp> {
       providers: [
         BlocProvider(create: (_) => sl<ProductsBloc>()..add(GetProducts())),
         BlocProvider(create: (_) => sl<ThemeBloc>()..add(GetTheme())),
+        BlocProvider(create: (_) => sl<CartBloc>()..add(LoadCart())),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
   builder: (context, state) {
@@ -59,7 +61,6 @@ class _MyAppState extends State<MyApp> {
         locale: _locale,
         debugShowCheckedModeBanner: false,
         theme: AppTheme.getTheme(state.themeEntity?.themeType== ThemeType.dark),
-        // darkTheme: darkMode,
         home: const ProductsScreen(appName: "Holo",),
       );
   },

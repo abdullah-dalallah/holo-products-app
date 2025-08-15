@@ -1,10 +1,5 @@
 part of 'theme_bloc.dart';
 
-// @immutable
-// sealed class ThemeState {}
-//
-// final class ThemeInitial extends ThemeState {}
-
 
 enum ThemeStatus { initial, loading, success, error }
 class ThemeState {

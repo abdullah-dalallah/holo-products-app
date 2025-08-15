@@ -31,4 +31,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get toggleToSwitchAppearance => 'اضغط لتغيير المظهر';
+
+  @override
+  String get cart => 'العربه';
+
+  @override
+  String get totalPrice => 'السعر الكلي';
+
+  @override
+  String get addToCart => 'آضف الى السله';
+
+  @override
+  String get cartEmpty => 'السله فارغه!';
 }
