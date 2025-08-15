@@ -126,7 +126,6 @@ class ProductCardWidget extends StatelessWidget{
                   sl<AEDGenerator>().generate(product.price),
                     fontWeight: ConstFontWeights.bold,
                     fontSize: ConstDimensions.bold16,
-
                     maxLines: 2,
                     textOverflow: TextOverflow.ellipsis,
                     height: 1.33,

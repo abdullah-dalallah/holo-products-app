@@ -145,6 +145,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Toggle To Switch Appearance'**
   String get toggleToSwitchAppearance;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
+
+  /// No description provided for @totalPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Price'**
+  String get totalPrice;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add To Cart'**
+  String get addToCart;
+
+  /// No description provided for @cartEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart Empty!'**
+  String get cartEmpty;
 }
 
 class _AppLocalizationsDelegate

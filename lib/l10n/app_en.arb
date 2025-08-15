@@ -6,5 +6,9 @@
   "learnMore": "Learn More",
   "done": "Done",
   "appearance": "Appearance",
-  "toggleToSwitchAppearance": "Toggle To Switch Appearance"
+  "toggleToSwitchAppearance": "Toggle To Switch Appearance",
+  "cart": "Cart",
+  "totalPrice": "Total Price",
+  "addToCart": "Add To Cart",
+  "cartEmpty": "Cart Empty!"
 }

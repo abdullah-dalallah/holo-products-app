@@ -4,6 +4,14 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:holo_products_app/core/network/network_info.dart';
 import 'package:holo_products_app/core/utils/AEDGenerator.dart';
+import 'package:holo_products_app/features/local_cart/data/data_sources/cart_local_data_source.dart';
+import 'package:holo_products_app/features/local_cart/data/repository/cart_repository_impl.dart';
+import 'package:holo_products_app/features/local_cart/domain/repository/cart_repository.dart';
+import 'package:holo_products_app/features/local_cart/domain/usecases/add_item_cart.dart';
+import 'package:holo_products_app/features/local_cart/domain/usecases/get_cart_use_case.dart';
+import 'package:holo_products_app/features/local_cart/domain/usecases/remove_item_from_cart.dart';
+import 'package:holo_products_app/features/local_cart/domain/usecases/update_item_quantity.dart';
+import 'package:holo_products_app/features/local_cart/presentation/bloc/cart_bloc.dart';
 import 'package:holo_products_app/features/products/data/data_sources/products_local_data_source.dart';
 import 'package:holo_products_app/features/products/data/data_sources/products_remote_data_source.dart';
 import 'package:holo_products_app/features/products/data/repositories/products_repository_impl.dart';
@@ -28,6 +36,9 @@ Future<void> initializeDependencies() async {
 
   //! feature - Settings theme
   themeSettings();
+
+  //! feature - Local Cart
+  cartFeature();
 
   //! Core
   sl.registerLazySingleton(() => ServerResponse());
@@ -66,6 +77,26 @@ themeSettings(){
   sl.registerLazySingleton<ThemeLocalDataSource>(() =>ThemeLocalDataSourceImpl( sharedPreferences: sl(), ));
   //repository
   sl.registerLazySingleton<ThemeRepository>(() =>ThemeRepositoryImpl(themeLocalDataSource: sl()));
+}
 
+cartFeature()  {
+  /// Bloc
+  sl.registerFactory(() => CartBloc(
+    getCartUseCase: sl(),
+    addItemUseCase: sl(),
+    removeItemUseCase: sl(),
+    updateQuantityUseCase: sl(),
+  ));
 
+  /// Use cases
+  sl.registerLazySingleton(() => GetCartUseCase(sl()));
+  sl.registerLazySingleton(() => AddItemToCartUseCase(sl()));
+  sl.registerLazySingleton(() => RemoveItemFromCartUseCase(sl()));
+  sl.registerLazySingleton(() => UpdateItemQuantityUseCase(sl()));
+
+  /// Repository
+  sl.registerLazySingleton<CartRepository>(() => CartRepositoryImpl(localDataSource: sl()));
+
+  /// Local data source
+  sl.registerLazySingleton<CartLocalDataSource>(() => CartLocalDataSourceImpl(sharedPreferences: sl()));
 }

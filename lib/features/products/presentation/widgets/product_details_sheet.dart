@@ -9,6 +9,8 @@ import 'package:holo_products_app/constants/my_colors.dart';
 import 'package:holo_products_app/core/presentation/widgets/base_text_widget.dart';
 import 'package:holo_products_app/core/presentation/widgets/flutter_rating_bar.dart';
 import 'package:holo_products_app/data/translation.dart';
+import 'package:holo_products_app/features/local_cart/domain/entity/cart_item_entity.dart';
+import 'package:holo_products_app/features/local_cart/presentation/bloc/cart_bloc.dart';
 import 'package:holo_products_app/features/products/domain/entities/product_entity.dart';
 import 'package:holo_products_app/features/theme/domain/entity/theme_entity.dart';
 import 'package:holo_products_app/features/theme/presntation/bloc/theme_bloc.dart';
@@ -186,9 +188,20 @@ class ProductDetailsSheet extends StatelessWidget{
                           ),
                         ),
                         onPressed: (){
+                          final item = CartItemEntity(
+                            id: product.id,
+                            title: product.title,
+                            price: product.price,
+                            image: product.image,
+                            quantity: 1,
+                          );
+
+                          context.read<CartBloc>().add(AddItemToCart(item));
+                          // context.read<CartBloc>().add(LoadCart());
+
                           Navigator.pop(context);
                         },
-                        child: BasicTextWidget(text: translation(context).done,
+                        child: BasicTextWidget(text: translation(context).addToCart,
                           fontWeight: ConstFontWeights.bold,
                           fontSize: ConstDimensions.regular14,
                           color: MyColors.white,

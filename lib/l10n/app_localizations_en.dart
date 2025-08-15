@@ -31,4 +31,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get toggleToSwitchAppearance => 'Toggle To Switch Appearance';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get totalPrice => 'Total Price';
+
+  @override
+  String get addToCart => 'Add To Cart';
+
+  @override
+  String get cartEmpty => 'Cart Empty!';
 }

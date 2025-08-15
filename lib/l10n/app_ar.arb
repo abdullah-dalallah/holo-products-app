@@ -6,5 +6,9 @@
   "learnMore": "أعلم المزيد",
   "done": "انتهى",
   "appearance": "المظهر",
-  "toggleToSwitchAppearance": "اضغط لتغيير المظهر"
+  "toggleToSwitchAppearance": "اضغط لتغيير المظهر",
+  "cart": "العربه",
+  "totalPrice": "السعر الكلي",
+  "addToCart": "آضف الى السله",
+  "cartEmpty": "السله فارغه!"
 }

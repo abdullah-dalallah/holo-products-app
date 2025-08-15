@@ -33,7 +33,6 @@ class ProductsRepositoryImpl implements ProductsRepository{
       } on CacheException {
         return Left(CacheFailure(message: FailureMessages.CACHE_FAILURE_MESSAGE));
       }
-      return Left(OfflineFailure(message: FailureMessages.OFFLINE_FAILURE_MESSAGE));
     }
   }
 

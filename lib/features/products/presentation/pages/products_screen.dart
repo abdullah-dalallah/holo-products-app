@@ -6,8 +6,11 @@ import 'package:holo_products_app/constants/my_colors.dart';
 import 'package:holo_products_app/core/presentation/widgets/base_text_widget.dart';
 import 'package:holo_products_app/core/presentation/widgets/rotating_loader.dart';
 import 'package:holo_products_app/core/presentation/widgets/settings_sheet.dart';
+import 'package:holo_products_app/features/local_cart/presentation/bloc/cart_bloc.dart';
+import 'package:holo_products_app/features/local_cart/presentation/widgets/cart_sheet.dart';
 import 'package:holo_products_app/features/products/presentation/bloc/products_bloc.dart';
 import 'package:holo_products_app/features/products/presentation/widgets/product_grid_view_widget.dart';
+import 'package:badges/badges.dart' as badges;
 
 class ProductsScreen extends StatelessWidget {
   final String appName;
@@ -51,7 +54,55 @@ class ProductsScreen extends StatelessWidget {
                   return  SettingsSheet();
                 }
             );
-          }, icon: ImageIcon(AssetImage("assets/images/icons/Hamburger Menu.png"),color: MyColors.white,))
+          }, icon: ImageIcon(AssetImage("assets/images/icons/Hamburger Menu.png"),color: MyColors.white,)),
+          IconButton(onPressed: (){
+            showModalBottomSheet(
+                useSafeArea: false,
+                enableDrag: true,
+                isScrollControlled: true,
+                context: context,
+                backgroundColor: Colors.transparent,
+                builder: (context){
+                  return  CartSheet();
+                }
+            );
+          }, icon: BlocBuilder<CartBloc, CartState>(
+                    builder: (context, state) {
+                      int cartCount = 0;
+                      if(state is CartLoaded){
+                        for (var item in state.items) {
+                          cartCount = item.quantity + cartCount;
+                        }
+                        return badges.Badge(
+                            badgeStyle: badges.BadgeStyle(
+                                borderRadius: BorderRadius.circular(10),
+                                shape: badges.BadgeShape.square,
+                                padding: EdgeInsets.only(left: 5,right: 5),
+                                badgeColor: MyColors.yellow400
+                            ),
+                            showBadge: cartCount == 0 ? false : true,
+                            badgeContent:BasicTextWidget(
+                                text: cartCount.toString(),
+                                fontWeight:  ConstFontWeights.regular,
+                                fontSize: ConstDimensions.regular12,
+                                color: MyColors.grey900
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 0.0),
+                              child: ImageIcon(AssetImage("assets/images/icons/Cart Large Minimalistic.png"),color: MyColors.white,),
+                            ));
+                      }else{
+                        return SizedBox();
+                      }
+
+
+
+                      return ImageIcon(AssetImage("assets/images/icons/Cart Large Minimalistic.png"),color: MyColors.white,);
+                    },
+))
+
+
+
         ],
       ),
       body: BlocBuilder<ProductsBloc, ProductsState>(
